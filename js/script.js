@@ -1,3 +1,6 @@
+const form_url =
+  "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeoht7N-NHnmn24upOnGO7Di_M9Km3E-fGSv8Y6-HI9GVzjMQ/formResponse?";
+
 /**
  * Elements
  */
@@ -30,6 +33,7 @@ const play = (soundID) => {
 const playNext = () => {
   if (currentTrial < numTrials) {
     play(trialList[currentTrial]);
+    recordData && postData(trialList[currentTrial]);
     currentTrial++;
     updateStats();
   } else {
@@ -125,3 +129,22 @@ const show = (element) => {
   element.classList.contains("d-none") && element.classList.remove("d-none");
 };
 // ---
+
+/**
+ * Send data to Google Sheet
+ */
+const postData = async (n) => {
+  const bodyString =
+    "entry.1548062699=" +
+    participantID +
+    "&entry.2137144009=" +
+    n +
+    "&submit=Submit";
+  const res = await fetch(form_url + bodyString, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  });
+};
