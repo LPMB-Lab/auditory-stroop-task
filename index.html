@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./css/style.css">
+
+  <title>Auditory Stroop Task | LPMB Lab</title>
+</head>
+
+<body class="container bg-primary min-vh-100 d-flex flex-column align-items-center justify-content-center text-center">
+
+  <section class="container" id="landing">
+    <button class="btn btn-light text-primary shadow-lg" onclick="showForm()">New
+      Participant</button>
+  </section>
+
+  <section class="d-none bg-white p-5 shadow-lg rounded" id="newParticipantForm">
+    <form onsubmit="formSubmitHandler(); return false;">
+      <div class="mb-3">
+        <label for="participantID" class="form-label">Participant ID</label>
+        <input type="number" class="form-control" id="participantID">
+      </div>
+      <div class="mb-3">
+        <label for="numTrials" class="form-label">Number of Trials</label>
+        <input type="number" min="1" class="form-control" id="numTrials">
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="recordData" checked>
+        <label class="form-check-label" for="recordData">Record data</label>
+      </div>
+      <button type="submit" class="btn btn-primary d-block mx-auto mt-5 w-100">Start</button>
+      <button type="button" onclick="showLanding();" class="btn btn-primary mt-3 w-100">Cancel</button>
+    </form>
+  </section>
+
+  <section class="w-100 w-md-50 w-lg-25 d-none" id="controls">
+    <p class="text-light fs-5" id="isRecording"></p>
+    <p class="text-light fs-4" id="currentTrial"></p>
+    <div class="container">
+      <div class="row gx-3 my-3">
+        <div class="col">
+          <button type="button" onclick="play(2)" class="btn btn-light py-4 text-primary text-uppercase fw-bold col-12">
+            HIGH <br /> &ldquo;LOW&rdquo;
+          </button>
+        </div>
+        <div class="col">
+          <button type="button" onclick="play(3)"
+            class="btn btn-light py-4  text-primary text-uppercase fw-bold col-12">
+            HIGH <br /> &ldquo;HIGH&rdquo;
+          </button>
+        </div>
+      </div>
+      <div class="row gx-3 my-3">
+        <div class="col">
+          <button type="button" onclick="play(0)"
+            class="btn btn-light py-4  text-primary text-uppercase fw-bold col-12">
+            LOW <br /> &ldquo;LOW&rdquo;
+          </button>
+        </div>
+        <div class="col">
+          <button type="button" onclick="play(1)"
+            class="btn btn-light py-4  text-primary text-uppercase fw-bold col-12">
+            LOW <br /> &ldquo;HIGH&rdquo;
+          </button>
+        </div>
+      </div>
+      <button class="btn btn-light text-primary mt-5 shadow-lg" id="playNext" onclick="playNext()">Next</button>
+    </div>
+  </section>
+
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
