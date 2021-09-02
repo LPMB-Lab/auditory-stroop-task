@@ -28,19 +28,23 @@ const play = (soundID) => {
 };
 
 const playNext = () => {
-  if (currentTrial <= numTrials - 1) {
+  if (currentTrial < numTrials) {
     play(trialList[currentTrial]);
-    if (currentTrial === numTrials - 1) {
-      playNextButton.innerHTML = "Exit";
-      trialIndicator.innerHTML = "Trials complete.";
-    } else {
-      trialIndicator.innerHTML =
-        "Trial " + (currentTrial + 1) + " / " + numTrials;
-    }
     currentTrial++;
+    updateStats();
   } else {
     clearTrialList();
     showLanding();
+  }
+};
+
+const updateStats = () => {
+  if (currentTrial >= numTrials) {
+    trialIndicator.innerHTML = "Trials complete.";
+    playNextButton.innerHTML = "Exit";
+  } else {
+    trialIndicator.innerHTML =
+      "Trial " + (currentTrial + 1) + " / " + numTrials;
   }
 };
 
@@ -62,6 +66,7 @@ const createTrialList = () => {
  */
 const formSubmitHandler = () => {
   participantID = participantIDElement.value;
+  currentTrial = 0;
   numTrials = numTrialsElement.value;
   recordData = recordDataElement.checked;
 
