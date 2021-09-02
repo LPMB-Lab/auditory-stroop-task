@@ -10,6 +10,10 @@ const controls = document.getElementById("controls");
 const playNextButton = document.querySelector("button#playNext");
 const trialIndicator = document.getElementById("currentTrial");
 const recordingIndicator = document.getElementById("isRecording");
+const audio0 = document.getElementById("audio0");
+const audio1 = document.getElementById("audio1");
+const audio2 = document.getElementById("audio2");
+const audio3 = document.getElementById("audio3");
 
 const participantIDElement = document.getElementById("participantID");
 const numTrialsElement = document.getElementById("numTrials");
@@ -27,7 +31,24 @@ const trialList = [];
 let currentTrial = 0;
 
 const play = (soundID) => {
-  console.log(soundID);
+  resetAllAudio();
+
+  switch (soundID) {
+    case 0:
+      audio0.play();
+      break;
+    case 1:
+      audio1.play();
+      break;
+    case 2:
+      audio2.play();
+      break;
+    case 3:
+      audio3.play();
+      break;
+    default:
+      console.log("Something went wrong playing audio " + soundID + ".");
+  }
 };
 
 const playNext = () => {
@@ -148,3 +169,41 @@ const postData = async (n) => {
     },
   });
 };
+
+/**
+ * Sound stuff
+ */
+const resetAudio = (soundID) => {
+  switch (soundID) {
+    case 0:
+      !audio0.paused && audio0.pause();
+      audio0.currentTime = 0;
+      audio0.volume = 1;
+      break;
+    case 1:
+      !audio1.paused && audio1.pause();
+      audio1.currentTime = 0;
+      audio1.volume = 1;
+      break;
+    case 2:
+      !audio2.paused && audio2.pause();
+      audio2.currentTime = 0;
+      audio2.volume = 1;
+      break;
+    case 3:
+      !audio3.paused && audio3.pause();
+      audio3.currentTime = 0;
+      audio3.volume = 1;
+      break;
+    default:
+      break;
+  }
+};
+
+const resetAllAudio = () => {
+  resetAudio(0);
+  resetAudio(1);
+  resetAudio(2);
+  resetAudio(3);
+};
+// ---

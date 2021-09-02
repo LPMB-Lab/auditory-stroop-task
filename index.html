@@ -23,7 +23,7 @@
       Participant</button>
   </section>
 
-  <section class="d-none bg-white p-5 shadow-lg rounded" id="newParticipantForm">
+  <section class="d-none bg-white p-5 shadow-sm rounded" id="newParticipantForm">
     <form onsubmit="formSubmitHandler(); return false;">
       <div class="mb-3">
         <label for="participantID" class="form-label">Participant ID</label>
@@ -37,12 +37,19 @@
         <input type="checkbox" class="form-check-input" id="recordData" checked>
         <label class="form-check-label" for="recordData">Record data</label>
       </div>
-      <button type="submit" class="btn btn-primary d-block mx-auto mt-5 w-100">Start</button>
-      <button type="button" onclick="showLanding();" class="btn btn-primary mt-3 w-100">Cancel</button>
+      <button type="submit" class="btn btn-primary d-block mx-auto mt-5 w-100 shadow-sm">Start</button>
+      <button type="button" onclick="showLanding();"
+        class="btn btn-primary d-block mx-auto mt-3 w-100 shadow-sm">Cancel</button>
     </form>
   </section>
 
   <section class="w-100 w-md-50 w-lg-25 d-none" id="controls">
+
+    <audio src="./assets/audio/0.wav" , id="audio0"></audio>
+    <audio src="./assets/audio/1.wav" , id="audio1"></audio>
+    <audio src="./assets/audio/2.wav" , id="audio2"></audio>
+    <audio src="./assets/audio/3.wav" , id="audio3"></audio>
+
     <p class="text-light fs-5" id="isRecording"></p>
     <p class="text-light fs-4" id="currentTrial"></p>
     <div class="container">
