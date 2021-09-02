@@ -100,6 +100,7 @@ const showForm = () => {
 const showControls = () => {
   hideAll();
   show(controls);
+  playNextButton.innerHTML = "Play Next";
   recordingIndicator.innerHTML = recordData
     ? "Recording data."
     : "Not recording data.";
